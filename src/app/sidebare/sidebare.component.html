@@ -1,0 +1,169 @@
+<div class="wrapper">
+
+
+
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+  <ul class="navbar-nav">
+  <li class="nav-item">
+  <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+  </li>
+  <li class="nav-item d-none d-sm-inline-block">
+  <a routerLink="/addworks" class="nav-link">Home</a>
+  </li>
+  <li class="nav-item d-none d-sm-inline-block">
+  <a routerLink="/listworks" class="nav-link">Network</a>
+  </li>
+  <li class="nav-item d-none d-sm-inline-block">
+    <a routerLink="/listproject" class="nav-link">List of project</a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item d-none d-sm-inline-block">
+      <a class="nav-link fs-6">
+        Welcome&nbsp;:&nbsp;{{ storage.getUser().username }}
+      </a>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-200"></i>
+        Profile
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" *ngIf="storage.getUser().roles == 'ROLE_ADMIN'" routerLink="listuser"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-200"></i>Ma fiches</a>
+        <a class="dropdown-item" *ngIf="storage.getUser().roles == 'ROLE_USER'" routerLink="user-details/{{ storage.getUser().id }}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-200"></i>Ma fiches</a>
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+          Configuration</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="handleLogout()"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Déconnection</a>
+      </div>
+    </li>
+  </ul>
+
+  </nav>
+
+
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a  class="brand-link">
+  <img src="assets/dist/img/logo pointage.png"  class="brand-image img-circle elevation-3" style="opacity: .8">
+  <span class="brand-text font-weight-light">App-pointage</span>
+  </a>
+
+  <div class="sidebar">
+
+  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
+  <div class="info text-center">
+   <a  class="text-info" >{{storage.getUser().username}}</a>
+  </div>
+  </div>
+
+
+
+  <nav class="mt-2">
+  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+<li class="nav-item">
+<a routerLink="/addworks" class="nav-link">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+<p>
+  Add works
+<span class="badge badge-info right">2</span>
+</p>
+</a>
+</li>
+<li class="nav-item" id="documents-dropdown" (click)="toggleSubMenu()">
+  <a class="nav-link">
+    <i class="fa fa-print" aria-hidden="true"></i>
+    <p>
+      Documents
+      <span class="badge badge-info right">2</span>
+    </p>
+  </a>
+  <ul class="sub-menu" [class.active]="isSubMenuVisible" >
+    <li class="nav-item"><a routerLink="bultin-de-paie"  class="nav-link" href="#">Bultin de paie</a></li>
+    <li class="nav-item"><a routerLink="compt-activite" class="nav-link" href="#">Compte d’activité</a></li>
+    <li class="nav-item"><a routerLink="contrat" class="nav-link" href="#">Contrat</a></li>
+  </ul>
+</li>
+
+
+  <li class="nav-item">
+
+    <a routerLink="/listproject" class="nav-link">
+      <i class="fa fa-file" aria-hidden="true"></i>
+    <p>
+    Project
+    <span class="badge badge-info right">2</span>
+    </p>
+    </a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="isAdmin ? '/produit' : '/cra'" class="nav-link">
+        <i class="fa fa-file" aria-hidden="true"></i>
+        <p>
+          CRA
+          <span class="badge badge-info right">2</span>
+        </p>
+      </a>
+    </li>
+    
+
+      <li class="nav-item">
+        <a routerLink="/frais" class="nav-link">
+          <i class="fa fa-file" aria-hidden="true"></i>
+        <p>
+        Frais
+        <span class="badge badge-info right">2</span>
+        </p>
+        </a>
+        </li>
+
+  <li class="nav-item"  *ngIf="storage.getUser().roles == 'ROLE_ADMIN'">
+
+    <a routerLink="/listuser" class="nav-link">
+      <i class="fa fa-users" aria-hidden="true"></i>
+    <p>
+      Utilisateurs
+    <span class="badge badge-info right">2</span>
+    </p>
+    </a>
+    </li>
+
+    <li class="nav-item"  *ngIf="storage.getUser().roles == 'ROLE_ADMIN'">
+
+      <a routerLink="/adduser" class="nav-link">
+        <i class="fa fa-user" aria-hidden="true"></i>
+      <p>
+      Ajouter un utilisateur
+      <span class="badge badge-info right">2</span>
+      </p>
+      </a>
+      </li>
+
+
+
+        <li class="nav-item">
+
+          <a routerLink="/listTache" class="nav-link">
+            <i class="fa fa-file" aria-hidden="true"></i>
+          <p>
+          Clients
+          <span class="badge badge-info right">2</span>
+          </p>
+          </a>
+          </li>
+
+  </ul>
+  </nav>
+
+  </div>
+
+  </aside>
+
+  <div class="content-wrapper">
+    <router-outlet></router-outlet>
+

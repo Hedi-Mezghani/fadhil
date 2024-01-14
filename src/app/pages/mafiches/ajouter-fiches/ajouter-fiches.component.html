@@ -1,0 +1,40 @@
+<div class="container p-3">
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()" class="form">
+  <div class="form-group">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" formControlName="nom" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="prenom">Prénom :</label>
+    <input type="text" id="prenom" formControlName="prenom" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="dateNaissance">Date de Naissance :</label>
+    <input type="date" id="dateNaissance" formControlName="dateNaissance" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="anciennete">Ancienneté :</label>
+    <input type="text" id="anciennete" formControlName="anciennete" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="mail">E-mail :</label>
+    <input type="email" id="mail" formControlName="mail" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="telephone">Numéro de Téléphone :</label>
+    <input type="tel" id="telephone" formControlName="telephone" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="rib">RIB :</label>
+    <input type="text" id="rib" formControlName="rib" class="form-control">
+  </div>
+
+  <button type="submit" [disabled]="!formulaire.valid" class="btn btn-primary">Soumettre</button>
+</form>
+</div>

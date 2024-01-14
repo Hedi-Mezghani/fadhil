@@ -1,0 +1,73 @@
+
+<div class="container">
+  <button class="btn btn-info m-1" (click)="exportexel()">export to exel</button>
+  <input
+  type="text"
+  name="search"
+  id="search"
+  class="form-control p-3"
+  [(ngModel)]="searchCat"
+  placeholder="Entrer le nom d'utilisateur"
+/>
+
+<table id="excel-table" class="table table-bordered table-striped m-2">
+  <thead>
+  <tr>
+
+    <th>Nombre de heur</th>
+    <th>Description du travail</th>
+    <th>Date du jour</th>
+    <th>Nom du projet</th>
+    <th>Nom d'utilisateur</th>
+    <th>Action</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let c of listworks | listWorksPipe: searchCat"  >
+
+
+    <td>{{c.nombreHeure}}</td>
+    <td>{{c.description}}</td>
+     <td>{{c.dateJour}}</td>
+     <td>{{c.project? c.project.name_project:'----'}}</td>
+     <td >{{c.user? c.user.username : 'UNKNOW'}}</td>
+
+
+
+    <div
+    class="text-center"
+
+    >
+    <button
+        type="button"
+        class="btn btn-danger btn-sm me-3 p-3 m-1"
+        (click)="Deleteworks(c.id)"
+      >
+      <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+      <button
+        type="button"
+        class="btn btn-info btn-sm p-3"
+        (click)="onDetail(c)"
+      >
+      <i class="fa fa-pen" aria-hidden="true"></i>
+      </button>
+     </div>
+
+  </tr>
+
+
+
+</table>
+<!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [length]="totalElements" > </mat-paginator> -->
+</div>
+<!-- <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
+</mat-paginator> -->
+
+
+
+
+<!-- <app-data-table></app-data-table> -->
+
+

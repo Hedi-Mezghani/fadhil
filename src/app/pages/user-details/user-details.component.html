@@ -1,0 +1,20 @@
+<div class="container p-3">
+
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Détails de l'utilisateur</h2>
+  </div>
+  <div class="card-body" *ngIf="user">
+    <p><strong>Nom :</strong> {{ user.username }}</p>
+    <p><strong>Prenom :</strong> {{ user.scendname }}</p>
+    <p><strong>Email :</strong> {{ user.email }}</p>
+    <p><strong>Ancienneté :</strong> {{ user.experience }}</p>
+    <p><strong>Date de Naissance :</strong> {{ user.birthday }}</p>
+    <p><strong>RIB :</strong> {{ user.rib}}</p>
+    <p><strong>Téléphone :</strong> {{ user.tel }}</p>
+    <p><strong>Mot de passe :</strong> {{ user.password }}</p>
+    <button class="btn btn-info" routerLink="/listuser"><i class="fas fa-sign-out-alt"></i> Liste des utilisateurs</button>
+  </div>
+</div>
+</div>

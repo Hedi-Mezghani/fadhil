@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row p-4">
+      <a class="col-2" type="button">
+        <label for="search" class="fs-6 d-flex justify-content-end text-info"
+          ><i class="fa fa-search" aria-hidden="true"></i> Search
+        </label>
+      </a>
+      <div class="col-8">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          class="form-control p-3"
+          [(ngModel)]="searchCat"
+          placeholder="Entrer le nom de la tache"
+        />
+        <!-- <span class="text-decoration-underline fs-5"
+              >Voulez vous ajouter un projet? Cliquer içi ! :</span
+            > -->
+      </div>
+      <div class="col-2"  *ngIf="storage.getUser().roles == 'ROLE_ADMIN'">
+
+        <button
+          type="button"
+          (click)="onCreate()"
+          class="btn btn-info ms-3 pt-3 pb-3 pe-3 ps-3"
+        >
+          Ajouter <i class="fa fa-plus ms-2"></i>
+        </button>
+      </div>
+
+      <table id="example1" class="table table-bordered table-striped m-2">
+        <thead>
+        <tr>
+          <th>Nom du tache</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of listTache ">
+          <td>{{c.nom}}</td>
+          <div
+          class="text-center"
+            *ngIf="storage.getUser().roles == 'ROLE_ADMIN'"
+          >
+          <button
+              type="button"
+              class="btn btn-danger btn-sm me-3 p-3 m-1"
+              (click)="DeleteTache(c.id)"
+            >
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-info btn-sm p-3"
+              (click)="onDetail(c)"
+            >
+            <i class="fa fa-pen" aria-hidden="true"></i>
+            </button>
+           </div>
+        </tr>
+      </table>
+  </div>
+

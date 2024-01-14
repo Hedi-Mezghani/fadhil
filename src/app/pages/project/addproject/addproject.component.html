@@ -1,0 +1,73 @@
+
+<div class="col-sm-8 col-sm-offset-2">
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+      <label for="name_project" class="fs-5 mt-3">Nom du projet</label>
+      <input
+        type="text"
+        id="name_project"
+        class="form-control mb-4 p-3 mt-4"
+        formControlName="name_project"
+        [(ngModel)]="cat.name_project"
+      />
+      <div
+        *ngIf="
+        name_project?.invalid &&
+          (name_project?.dirty || name_project?.touched)
+        "
+        class="alert alert-danger mt-1"
+      >
+        <div *ngIf="name_project?.errors?.['required']">Champs obligatoire</div>
+
+        <div *ngIf="name_project?.errors?.['minlength']">
+          Le champs doit contenir au moins 2 caractères
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input
+        style="display: none"
+        type="file"
+        class="mb-4 p-3"
+        (change)="onFileChanged($event)"
+        #fileInput
+      />
+
+      <label for="description_projet" class="fs-5 mt-3">Description du projet</label>
+      <input
+        type="text"
+        class="form-control mb-4 p-3"
+        id="description_projet"
+        name="description_projet"
+        formControlName="description_projet"
+        [(ngModel)]="cat.description_projet"
+      />
+      <div
+        *ngIf="
+        name_project?.invalid &&
+          (description_projet?.dirty || description_projet?.touched)
+        "
+        class="alert alert-danger mt-1"
+      >
+        <div *ngIf="description_projet?.errors?.['required']">Champs obligatoire</div>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-dark me-3 p-3">
+        Enregistrer <i class="fa fa-database ms-2"></i>
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-dark ml-1 p-3"
+        [mat-dialog-close]
+      >
+        <i class="fa fa-close"></i> Close
+      </button>
+    </div>
+  </form>
+</div>
+
+

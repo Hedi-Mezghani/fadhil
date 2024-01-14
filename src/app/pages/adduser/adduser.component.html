@@ -1,0 +1,226 @@
+<div class="container position d-flex flex-column min-vh-100">
+  <div class="card col-md-6 offset-3 mt-4 shadow-lg">
+    <div class="card-header"><strong>Ajouter un utilisateur</strong></div>
+    <div class="card-body">
+      <form
+        [formGroup]="newuserFormGroup"
+        (ngSubmit)="handleSaveuser()"
+      >
+        <div class="mb-3">
+          <label class="form-label">Nom:</label>
+          <input type="text" formControlName="username" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['username'].touched &&
+            newuserFormGroup.controls['username'].errors &&
+            newuserFormGroup.controls['username'].errors!['required']
+            "
+          >
+            Name is Required
+          </span>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Prenom:</label>
+          <input type="text" formControlName="scendname" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['scendname'].touched &&
+            newuserFormGroup.controls['scendname'].errors &&
+            newuserFormGroup.controls['scendname'].errors!['required']
+            "
+          >
+            Name is Required
+          </span>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Ancienneté :</label>
+          <input type="text" formControlName="experience" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['experience'].touched &&
+            newuserFormGroup.controls['experience'].errors &&
+            newuserFormGroup.controls['experience'].errors!['required']
+            "
+          >
+            Name is Required
+          </span>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Date de Naissance:</label>
+          <input type="date" formControlName="birthday" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['birthday'].touched &&
+            newuserFormGroup.controls['birthday'].errors &&
+            newuserFormGroup.controls['birthday'].errors!['required']
+            "
+          >
+            Name is Required
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">RIB:</label>
+          <input type="text" formControlName="rib" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['rib'].touched &&
+            newuserFormGroup.controls['rib'].errors &&
+            newuserFormGroup.controls['rib'].errors!['required']
+            "
+          >
+            Name is Required
+          </span>
+        </div>
+
+
+
+        <div class="mb-3">
+          <label class="form-label">Email:</label>
+          <input type="text" formControlName="email" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+              newuserFormGroup.controls['email'].touched &&
+              newuserFormGroup.controls['email'].errors &&
+              newuserFormGroup.controls['email'].errors!['email']
+            "
+          >
+            Email is Not Valid
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">password:</label>
+          <input type="text" formControlName="password" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['password'].touched &&
+            newuserFormGroup.controls['password'].errors &&
+            newuserFormGroup.controls['password'].errors!['required']
+            "
+          >
+            password is Required
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Telephone:</label>
+          <input type="text" formControlName="tel" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['tel'].touched &&
+            newuserFormGroup.controls['tel'].errors &&
+            newuserFormGroup.controls['tel'].errors!['required']
+            "
+          >
+          Phone is Required
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Post:</label>
+          <input type="text" formControlName="post" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['post'].touched &&
+            newuserFormGroup.controls['post'].errors &&
+            newuserFormGroup.controls['post'].errors!['required']
+            "
+          >
+            Name is Required
+          </span>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Equipe:</label>
+          <input type="text" formControlName="equipe" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['equipe'].touched &&
+            newuserFormGroup.controls['equipe'].errors &&
+            newuserFormGroup.controls['equipe'].errors!['required']
+            "
+          >
+          equipe is Required
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Manager:</label>
+          <input type="text" formControlName="manager" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['manager'].touched &&
+            newuserFormGroup.controls['manager'].errors &&
+            newuserFormGroup.controls['manager'].errors!['required']
+            "
+          >
+          manager is Required
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Statuts des contrats:</label>
+          <input type="text" formControlName="statut" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['statut'].touched &&
+            newuserFormGroup.controls['statut'].errors &&
+            newuserFormGroup.controls['statut'].errors!['required']
+            "
+          >
+          statut is Required
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Date debut:</label>
+          <input type="date" formControlName="datedebut" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['datedebut'].touched &&
+            newuserFormGroup.controls['datedebut'].errors &&
+            newuserFormGroup.controls['datedebut'].errors!['required']
+            "
+          >
+          datedebut is Required
+          </span>
+        </div>
+
+        <!-- <div class="mb-3">
+          <label class="form-label">Role:</label>
+          <input type="text" formControlName="roles" class="form-control" />
+          <span
+            class="text-danger"
+            *ngIf="
+            newuserFormGroup.controls['roles'].touched &&
+            newuserFormGroup.controls['roles'].errors &&
+            newuserFormGroup.controls['roles'].errors!['required']
+            "
+          >
+            role is Required
+          </span>
+        </div> -->
+        <button
+          class="btn btn-success"
+          [disabled]="!newuserFormGroup.valid"
+
+        >
+          Save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+
+  
+<form #selectionForm="ngForm">
+  <div class="row g-2">
+    <div class="col-md">
+      <div class="form-floating">
+        <label for="floatingSelectGrid">Mois</label>
+        <select class="form-select" id="floatingSelectGrid" aria-label="Month" [(ngModel)]="selectedMonth" [ngModelOptions]="{standalone: true}" name="selectedMonth">
+          <option *ngFor="let month of months" [value]="month.value">{{ month.viewValue }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <div class="form-field-container">
+    <label for="selectedYear">Années</label>
+    <select id="selectedYear" [(ngModel)]="selectedYear" name="selectedYear">
+      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+    </select>
+  </div>
+
+  <div class="form-field-container">
+    <label for="selectedUser">Utilisateur</label>
+    <select id="selectedUser" [(ngModel)]="selectedUser" name="selectedUser">
+      <option *ngFor="let user of users" [value]="user.username">{{ user.username }}</option>
+    </select>
+  </div>
+
+
+
+
+  <button mat-button (click)="searchByDates()">Rechercher</button>
+</form>
+
+
+<!-- produit.component.html -->
+<!-- <app-cra #craComponent></app-cra> -->

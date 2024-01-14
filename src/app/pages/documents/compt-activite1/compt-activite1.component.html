@@ -1,0 +1,66 @@
+<button type="button" class="close" aria-label="Close" [mat-dialog-close]>
+  <span aria-hidden="true">&times;</span>
+</button>
+
+<!-- Liste déroulante pour les mois -->
+
+<div  *ngIf="isUserAdmin()" class="row">
+  <div class="col-md-6 col-sm-12">
+    <label for="moisSelectionne" class="form-label">Mois</label>
+    <select id="moisSelectionne" class="form-control" [(ngModel)]="moisSelectionne">
+      <option value="janvier">Janvier</option>
+      <option value="février">Février</option>
+      <option value="mars">Mars</option>
+      <option value="avril">Avril</option>
+      <option value="mai">Mai</option>
+      <option value="juin">Juin</option>
+      <option value="juillet">Juillet</option>
+      <option value="août">Août</option>
+      <option value="septembre">Septembre</option>
+      <option value="octobre">Octobre</option>
+      <option value="novembre">Novembre</option>
+      <option value="décembre">Décembre</option>
+    </select>
+  </div>
+  <div
+  *ngIf="isUserAdmin()"
+  class="col-md-6 col-sm-12">
+    <label for="anneeSelectionnee" class="form-label">Année</label>
+    <input id="anneeSelectionnee" class="form-control" type="number" placeholder="Année" [(ngModel)]="anneeSelectionnee">
+  </div>
+</div>
+
+<!-- Bouton d'ajout de dossier -->
+<button
+*ngIf="isUserAdmin()"
+class="btn btn-primary m-2" (click)="ajouterDossier()">Ajouter un dossier</button>
+
+<hr/>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nom du dossier</th>
+      <th>Dernière modification</th>
+      <th  *ngIf="isUserAdmin()">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dossier of dossiers">
+      <td>  <i class="fa fa-folder"></i> <a (click)="onCreate(dossier.user_id)" class="pointer-link"> {{ dossier.nom }}</a></td>
+      <td>{{ dossier.derniereModification | date: 'dd/MM/yyyy' }}</td>
+      <td>
+        <div
+        *ngIf="isUserAdmin()"
+         class="custom-dropdown">
+          <button mat-icon-button [matMenuTriggerFor]="menu" class="dots-button">
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editerDossier(dossier)">Éditer</button>
+            <button mat-menu-item (click)="supprimerDossier(dossier)">Supprimer</button>
+          </mat-menu>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

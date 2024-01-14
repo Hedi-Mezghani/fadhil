@@ -1,0 +1,32 @@
+<p>contrat-upload works!</p>
+<!-- Dans votre composant Angular -->
+<button  class="btn btn-info" type="button" class="close" aria-label="Close" [mat-dialog-close]>
+  <span aria-hidden="true">&times;</span>
+</button>
+<div class="mb-3">
+  <label for="fileInput" class="form-label">Sélectionnez les fichiers à télécharger :</label>
+  <input id="fileInput" type="file" (change)="onFileSelected($event)" class="form-control" multiple>
+</div>
+<div  class="mb-3">
+  <button class="btn btn-info" (click)="onSubmit()">Uploader les fichiers</button>
+</div>
+<br>
+<label for="moisSelectionne" class="form-label">Telechargement <i class="fa fa-file-pdf-o">PDF</i> </label>
+<div *ngIf="filenames.length > 0" class="js-upload-finished">
+  <i class="fa fa-check-circle text-success"></i> Fichiers traités avec succès
+</div>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nom du fichier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let file of filenames; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td><a (click)="downloadPdf(i)" class="text-info" style="cursor: pointer;">{{ file }}</a></td>
+    </tr>
+  </tbody>
+</table>

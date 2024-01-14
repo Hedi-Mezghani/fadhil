@@ -1,0 +1,188 @@
+<mat-grid-list cols="1" rowHeight="9.5:1">
+
+  <form #activityForm="ngForm" (ngSubmit)="onSubmitCra(activityForm.value)">
+        <div class="activity-section">
+          <div >
+            <div class="button-header" id="container">
+              <h1>Activité normale</h1>
+              <button mat-mini-fab color="blanc" aria-label="Bouton avec une icône Ajouter" class="example-button " >
+                <mat-icon>add</mat-icon>
+              </button>
+          
+              <div class="flex-container" id="flex-container-end">
+      
+                  <div class="slider-container">
+                    <label id="example-name-label" class="example-name-label">%</label>
+                    <label class="example-value-label">{{ percentage }}</label>
+                    <mat-slider
+                      [disabled]="disabled"
+                      [invert]="invert"
+                      [max]="max" 
+                      [min]="min" 
+                      [step]="step"
+                      [thumbLabel]="thumbLabel"
+                      [showTickMarks]="showTicks"
+                      [(ngModel)]="percentage"
+                      [vertical]="vertical"
+                      (change)="onPercentageChange()"
+                      aria-labelledby="example-name-label">
+                      <input matSliderThumb [(ngModel)]="percentage" #slider>
+                    </mat-slider>
+                
+                </div>
+                
+                <button class="btn-position" mat-stroked-button color="primary" type="button" aria-label="Envoyer" (click)="onSubmit()">
+                  Envoyer
+                  <mat-icon>send</mat-icon>
+               </button>
+               
+                <button class="btn-position" mat-stroked-button color="primary" type="submit" aria-label="imprimer" (click)="exproterVente()">
+                  Imprimer
+                  <mat-icon>print</mat-icon>
+                </button>
+
+                <button class="btn-position" mat-stroked-button color="primary" type="submit" aria-label="Valider">
+                  Valider
+                  <mat-icon>done</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+        
+          <div class="form-field-container">
+            <label>Taches</label>
+            <select name="choixClient" [(ngModel)]="choixClient" [ngModelOptions]="{standalone: true}">
+              <option *ngFor="let client of clients; trackBy: trackByFn" [value]="client.nom">{{ client.nom }}</option>
+              <option *ngFor="let data of craData" >{{ data.choixClient }}</option>
+            </select>
+          </div>
+      
+          <div class="form-field-container">
+            <label>Projets</label>
+            <select name="choixProjet" [(ngModel)]="choixProjet" [ngModelOptions]="{standalone: true}">
+              <option *ngFor="let project of projects; trackBy: trackByFn" [value]="project.name_project">{{ project.name_project }}</option>
+              <option *ngFor="let data of craData" >{{ data.choixProjet }}</option>
+            </select>
+          </div>
+          
+          
+        </div>
+        
+        <div class="form-header">
+          <div class="date-navigation">
+            <button class="nav-button" (click)="previousMonth()">
+              <span class="arrow">&larr;</span>
+            </button>
+            <h2>{{ currentMonth }} {{ currentYear }}</h2>
+            <button class="nav-button" (click)="nextMonth()">
+              <span class="arrow">&rarr;</span>
+            </button>
+          </div>
+        </div>
+        
+      
+        <div class="table-container">
+          <table id="table-taille">
+            <tr>
+              <ng-container *ngFor="let day of daysInMonth; let i = index">
+                <td id="td-taille">
+                  <div class="day-letter">{{ day.day }}</div>
+                  <div class="day-number">{{ day.date }}</div>
+                  <div class="text-input">
+                    <input
+                    type="text"
+                    placeholder=""
+                    size="1"
+                    name="textInputs"
+                    [(ngModel)]="textInputs[i]"
+                    [ngClass]="{'error-input': isInvalidInput(textInputs[i])}"
+                    (input)="onInputChange()"
+                  />
+                  <div *ngIf="isInvalidInput(textInputs[i])" ><div class="alert alert-danger" role="alert">
+                  erreur
+                  </div></div>
+                                    </div>
+                </td>
+                <td *ngIf="i < firstDayOfMonthIndex || i >= daysInMonth.length + firstDayOfMonthIndex"></td>
+              </ng-container>
+            </tr>
+          </table>
+          
+          
+          <button mat-mini-fab color="primary" aria-label="Bouton avec une icône Supprimer" class="delete-button" (click)="resetTable()">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      
+        <div class="totals-tables">
+          <div id="totals-table">
+            <table>
+              <tr>
+                <th>Production</th>
+              </tr>
+              <tr>
+                <td>Total {{ production }}</td>
+              </tr>
+            </table>
+          </div>
+        
+          <div id="totals-table">
+            <table>
+              <tr>
+                <th>Absence</th>
+              </tr>
+              <tr>
+                <td>Total {{ absence }}</td>
+              </tr>
+            </table>
+          </div>
+        
+          <div id="totals-table">
+            <table>
+              <tr>
+                <th>Interne</th>
+              </tr>
+              <tr>
+                <td>Total</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+      
+        <div class="comment-container">
+          <div class="comment-section">
+            <label for="comment">Commentaire</label>
+            <textarea id="comment" name="comment" [ngModel]="craData ? craData[0]?.comment : ''"></textarea>
+          </div>
+          
+          
+          <div class="upload-section">
+            <label for="fileInput" class="upload-button">
+              <div class="upload-icon">
+                <mat-icon>cloud_upload</mat-icon>
+              </div>
+              <div class="upload-label">
+                Sélectionner un fichier
+              </div>
+            </label>
+            <input type="file" accept=".pdf" (change)="onFileSelected($event)" style="display: none;" id="fileInput" />
+          </div>
+         
+      
+            <div *ngIf="filenames.length > 0" class="js-upload-finished">
+              <i class="fa fa-check-circle text-success"></i> Fichiers traités avec succès {{filenames}}
+            </div>
+       
+        </div>
+
+    </form>
+
+</mat-grid-list>
+
+<button class="btn-position" mat-stroked-button color="primary" type="button" aria-label="Imprimer" (click)="generatePdf()">
+  Imprimer
+  <mat-icon>print</mat-icon>
+</button>
+

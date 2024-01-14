@@ -1,0 +1,134 @@
+
+<div class="col-sm-8 col-sm-offset-2">
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmitForm()">
+      <div class="form-group">
+        <label for="nom" class="fs-5 mt-3">Nom</label>
+        <input
+          type="text"
+          id="nom"
+          class="form-control mb-4 p-3 mt-4"
+          formControlName="nom"
+          [(ngModel)]="cat.nom"
+        />
+
+      </div>
+  
+   
+      <div class="form-group">
+        <label for="code_client" class="fs-5 mt-3">code_client</label>
+        <input
+          type="text"
+          class="form-control mb-4 p-3"
+          id="code_client"
+          name="code_client"
+          formControlName="code_client"
+          [(ngModel)]="cat.code_client"
+        />
+      </div>
+
+  
+      <div class="form-group">
+        <label for="address" class="fs-5 mt-3">adresse</label>
+        <input
+          type="text"
+          id="adress"
+          class="form-control mb-4 p-3 mt-4"
+          formControlName="address"
+          [(ngModel)]="cat.address"
+        />
+
+      </div>
+
+      <div class="form-group">
+        <label for="code_postal" class="fs-5 mt-3">code postal</label>
+        <input
+          type="text"
+          id="code_postal"
+          class="form-control mb-4 p-3 mt-4"
+          formControlName="code_postal"
+          [(ngModel)]="cat.code_postal"
+        />
+
+      </div>
+
+      <div class="form-group">
+        <label for="pays" class="fs-5 mt-3">pays</label>
+        <input
+          type="text"
+          id="pays"
+          class="form-control mb-4 p-3 mt-4"
+          formControlName="pays"
+          [(ngModel)]="cat.pays"
+        />
+
+      </div>
+
+      <div class="form-group">
+        <label for="department" class="fs-5 mt-3">departement</label>
+        <input
+          type="text"
+          id="department"
+          class="form-control mb-4 p-3 mt-4"
+          formControlName="department"
+          [(ngModel)]="cat.department"
+        />
+  
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="fs-5 mt-3">Email</label>
+        <input
+          type="text"
+          id="email"
+          class="form-control mb-4 p-3 mt-4"
+          formControlName="email"
+          [(ngModel)]="cat.email"
+        />
+   
+        
+        </div>
+   
+
+      <div class="form-group">
+        <label for="web" class="fs-5 mt-3">web</label>
+        <input
+          type="text"
+          id="web"
+          class="form-control mb-4 p-3 mt-4"
+          formControlName="web"
+          [(ngModel)]="cat.web"
+        />
+ 
+        
+       
+      </div>
+
+      <div class="form-group">
+        <label for="telephone" class="fs-5 mt-3">telephone</label>
+        <input
+          type="text"
+          id="telephone"
+          class="form-control mb-4 p-3 mt-4"
+          formControlName="telephone"
+          [(ngModel)]="cat.telephone"
+        />
+ 
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-dark me-3 p-3">
+          Enregistrer <i class="fa fa-database ms-2"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-dark ml-1 p-3"
+          [mat-dialog-close]
+        >
+          <i class="fa fa-close"></i> Close
+        </button>
+      </div>
+    </form>
+  </div>
+  
+  
+  

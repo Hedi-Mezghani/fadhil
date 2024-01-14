@@ -1,0 +1,16 @@
+.sub-menu {
+  display: none;
+
+}
+.sub-menu.active {
+  display: block;
+
+}
+.sub-menu li {
+  list-style: disc; /* Utilisez disc pour des points pleins, circle pour des cercles vides, etc. */
+  color: white; /* Change la couleur des points de la liste à blanc */
+
+}
+.navbar-nav.ml-auto {
+  margin-right: 38px;
+}

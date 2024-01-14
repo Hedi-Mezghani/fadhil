@@ -1,0 +1,106 @@
+<!-- <div class="container" style="margin-top: 20px;">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Upload and Download Files</h4>
+    </div>
+    <br>
+    <div class="panel-body">
+      <strong>Select files from your computer</strong>
+      <div *ngIf="fileStatus.status==='progress'">
+        <div class="progress">
+          <div [style.width.%]="fileStatus.percent" class="progress-bar progress-bar-animated bg-info"
+            role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            {{ fileStatus.requestType }} {{ fileStatus.percent }}
+          </div>
+        </div>
+      </div>
+      <hr>
+
+
+
+            <input type="file" (change)="onFileSelected($event)" multiple>
+            <form >
+            <button (click)="onSubmit()">Uploader les fichiers</button>
+             </form>
+
+
+      <br>
+      <a [href]="pdfUrl" download="ufpo9ygwmimxltl9vkxy.pdf">Télécharger le PDF</a>
+      <div *ngIf="filenames.length > 0" class="js-upload-finished">
+        <h3>Processed files</h3>
+        <div *ngFor="let filename of filenames" class="list-group">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span>{{ filename }}</span>
+            <button class="btn btn-success" (click)="onDownload(filename)">Download</button>
+
+          </div>
+        </div>
+      </div> -->
+
+
+
+
+
+<!--
+    </div>
+  </div>
+</div> -->
+
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Tableaux des Utilisateurs</h3>
+  </div>
+
+  <div class="card-body">
+    <button class="btn btn-info m-1 float-right" routerLink="/adduser"><i class="fas fa-plus"></i> Ajouter un utilisateur</button>
+    <table id="example1" class="table table-bordered table-striped">
+      <thead>
+      <tr>
+
+        <th>Nom</th>
+        <th>Post</th>
+        <th>Equipe</th>
+        <th>Manger</th>
+        <th>Date de début</th>
+        <th>Statut(s) de(s)contrat(s) </th>
+        <th>Action</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of dataArray">
+
+
+        <td><a (click)="onCreate(item)" class="pointer-link">{{item.username}}</a></td>
+        <td>{{item.post}}</td>
+        <td>{{item.equipe}}</td>
+        <td>{{item.manager}}</td>
+        <td>{{item.datedebut}}</td>
+        <td>{{item.statut}}</td>
+
+        <button   *ngIf="isUserAdmin()"
+                  (click)="handleDeleteUser(item)"
+                  class="btn btn-danger m-1"
+                >
+                <i class="fa fa-trash"></i>
+                </button>
+                <button class="btn btn-info m-1" (click)="afficherDetailsUtilisateur(item)">
+                  <i class="fa fa-eye"></i>
+                </button>
+      </tr>
+
+
+
+    </table>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Tableaux des Utilisateurs / Compt d'activite</h3>
+  </div>
+
+  <div class="card-body">
+    <button class="btn btn-info m-1 float-right" routerLink="/adduser"><i class="fas fa-plus"></i> Ajouter un utilisateur</button>
+    <table id="example1" class="table table-bordered table-striped">
+      <thead>
+      <tr>
+
+        <th>Nom</th>
+        <th>Post</th>
+        <th>Equipe</th>
+        <th>Manger</th>
+        <th>Date de début</th>
+        <th>Statut(s) de(s)contrat(s) </th>
+        <th>Action</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of dataArray">
+
+
+        <td><a (click)="onCreate(item)" class="pointer-link">{{item.username}}</a></td>
+        <td>{{item.post}}</td>
+        <td>{{item.equipe}}</td>
+        <td>{{item.manager}}</td>
+        <td>{{item.datedebut}}</td>
+        <td>{{item.statut}}</td>
+
+        <button   *ngIf="isUserAdmin()"
+                  (click)="handleDeleteUser(item)"
+                  class="btn btn-danger m-1"
+                >
+                <i class="fa fa-trash"></i>
+                </button>
+                <button class="btn btn-info m-1" (click)="afficherDetailsUtilisateur(item)">
+                  <i class="fa fa-eye"></i>
+                </button>
+      </tr>
+
+
+
+    </table>
+  </div>
+
+</div>
